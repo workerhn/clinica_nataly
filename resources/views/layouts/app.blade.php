@@ -46,7 +46,13 @@
         </ul>
       </nav>
 
-      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4"
+         style="background-image: url('{{ asset('img/fondo.jpg') }}');
+             background-size: cover;
+             background-repeat: no-repeat;
+             background-position: center;
+             background-attachment: scroll;
+             min-height: 100vh;">
         @yield('content')
       </main>
     </div>

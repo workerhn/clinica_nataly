@@ -1,37 +1,37 @@
-<x-guest-layout>
+@extends('layouts.auth')
+
+@section('title', 'Iniciar sesión')
+
+@section('content')
+<div class="card shadow p-4 mx-auto" style="max-width: 400px; background-color: rgba(255, 255, 255, 0.95); border-radius: 12px;">
     <div class="text-center mb-4">
         <img src="{{ asset('img/logo medico.png') }}" alt="Logo" style="width: 120px;">
     </div>
 
-    <div class="container" style="max-width: 400px;">
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
+    <form method="POST" action="{{ route('login') }}">
+        @csrf
 
-            <!-- Email Address -->
-            <div class="mt-4">
-                <label for="email">Correo electrónico</label>
-                <input id="email" class="form-control" type="email" name="email" required autofocus />
+        <div class="mb-3">
+            <label for="email" class="form-label">Correo electrónico</label>
+            <input id="email" class="form-control" type="email" name="email" required autofocus>
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <input id="password" class="form-control" type="password" name="password" required>
+        </div>
+
+        @if (Route::has('register'))
+            <div class="mb-3">
+                <a class="text-decoration-none" href="{{ route('register') }}">
+                    ¿No tienes cuenta? Regístrate
+                </a>
             </div>
+        @endif
 
-            <!-- Password -->
-            <div class="mt-4">
-                <label for="password">Contraseña</label>
-                <input id="password" class="form-control" type="password" name="password" required />
-            </div>
-
-            @if (Route::has('register'))
-                <div class="mt-2">
-                    <a class="text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
-                        {{ __('¿No tienes cuenta? Regístrate') }}
-                    </a>
-                </div>
-            @endif
-
-            <div class="mt-4 text-center">
-                <button type="submit" class="btn btn-primary">
-                    Iniciar sesión
-                </button>
-            </div>
-        </form>
-    </div>
-</x-guest-layout>
+        <div class="d-grid">
+            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+        </div>
+    </form>
+</div>
+@endsection
